@@ -1,5 +1,5 @@
 """
-Elefan pin code generation (code valable a partir de la prochaine nuit et pour une semaine)
+Elefan pin code generation (code valable a partir de la prochaine heure pleine et pour une semaine)
 Requires : Un fichier .env avec les variables (disponible dans le keepass elefan)
  - IGLOO_HOME_CLIENT_ID
  - IGLOO_HOME_CLIENT_SECRET
@@ -45,8 +45,8 @@ response_device_id = requests.get(
 )
 
 device_id = response_device_id.json()["payload"][0]["deviceId"]
-tomorrow = datetime.now() + timedelta(days=1)
-next_week = tomorrow + timedelta(days=7)
+today = datetime.now() + timedelta(hours=1)
+next_week = today + timedelta(days=7)
 
 # Generate pin
 response_generate_pin = requests.post(
@@ -58,8 +58,8 @@ response_generate_pin = requests.post(
     },
     json={
         "variance": 1,
-        "startDate": tomorrow.strftime("%Y-%m-%dT03:00:00+01:00"),
-        "endDate": next_week.strftime("%Y-%m-%dT03:00:00+01:00"),
+        "startDate": today.strftime("%Y-%m-%dT%H:00:00+01:00"),
+        "endDate": next_week.strftime("%Y-%m-%dT%H:00:00+01:00"),
         "accessName": "Temporary Hebdo PIN API 2"
     }
 )

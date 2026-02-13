@@ -42,7 +42,7 @@ uv run python elefan.py
 Le script va :
 1. S'authentifier auprès de l'API Igloo Home
 2. Récupérer votre identifiant de périphérique
-3. Générer un code PIN temporaire valable à partir de demain jusqu'à une semaine à partir de demain
+3. Générer un code PIN temporaire valable à partir de la prochaine heure pleine jusqu'à une semaine après
 4. Retourner le code PIN généré
 
 Ensuite, copiez le code généré et enregistrez-le ici : https://membres.lelefan.org/codes/new
